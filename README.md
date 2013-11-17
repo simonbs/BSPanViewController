@@ -5,7 +5,7 @@ You can optionally have the controller move the status bar along with the main v
 The controller also makes it easy to add and configure a parallax effect when opening and closing the sides. The parallax effect is optional.
 
 <p align="center">
-  <img src="screenshot.gif" alt="Screenshot" style="width:319px;" />
+  <img src="screenshot.gif" alt="Screenshot" width="320" />
 </p>
 
 ## Requirements
