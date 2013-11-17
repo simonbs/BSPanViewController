@@ -12,7 +12,6 @@ The controller also makes it easy to add and configure a parallax effect when op
 
 - BSPanViewController requires ARC to be enabled. If you are not already using ARC, now is a good time.
 - The control does only support iOS 7.
-- Currently the control requires `UIViewControllerBasedStatusBarAppearance` to be `NO`. I hope to remove this requirement soon.
 
 ## Installation
 
@@ -42,6 +41,8 @@ You set `mainController` which is the controller which can be dragged. That is, 
     self.panController.rightController = [RightViewController new];
     
 BSPanViewController has a lot of settings which can be set independently for the left and the right side. Please take a look at `BSPanViewController.h` for more information on the settings.
+
+The control works with `UIViewControllerBasedStatusBarAppearance` set to `YES` or `NO`. If you have the value set to `YES` you might want to subclass BSPanViewController and implemenet `-preferredStatusBarStyle` to decide the style of the status bar.
 
 ## Known Issues
 
