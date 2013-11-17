@@ -48,6 +48,7 @@
 @property (nonatomic, strong) UIView *statusBarContainer;
 @property (nonatomic, assign) CGRect initialMainControllerFrame;
 @property (nonatomic, assign, getter = isStatusBarFaked) BOOL statusBarFaked;
+@property (nonatomic, assign) BOOL hideStatusBar; // Used when UIViewControllerBasedStatusBarAppearance is true
 @end
 
 @implementation BSPanViewController
@@ -120,6 +121,11 @@
     _statusBarContainer = nil;
     _leftShadowColor = nil;
     _rightShadowColor = nil;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return self.hideStatusBar;
 }
 
 #pragma mark -
@@ -331,7 +337,7 @@
     [self.statusBarContainer addSubview:screenshot];
     [self.mainController.view addSubview:self.statusBarContainer];
     
-    [UIApplication sharedApplication].statusBarHidden = YES;
+    [self setStatusBarHidden:YES];
     
     self.initialMainControllerFrame = self.mainController.view.frame;
     
@@ -350,9 +356,23 @@
     
     self.mainController.view.frame = self.initialMainControllerFrame;
     
-    [UIApplication sharedApplication].statusBarHidden = NO;
+    [self setStatusBarHidden:NO];
     
     self.statusBarFaked = NO;
+}
+
+- (void)setStatusBarHidden:(BOOL)hidden
+{
+    BOOL UIViewControllerBasedStatusBarAppearance = [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"] boolValue];
+    if (UIViewControllerBasedStatusBarAppearance)
+    {
+        self.hideStatusBar = hidden;
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    else
+    {
+        [UIApplication sharedApplication].statusBarHidden = hidden;
+    }
 }
 
 #pragma mark -
