@@ -10,9 +10,9 @@ The controller also makes it easy to add and configure a parallax effect when op
 
 ## Requirements
 
-BSPanViewController requires ARC to be enabled. If you are not already using ARC, now is a good time.
-
-The control does only support iOS 7.
+- BSPanViewController requires ARC to be enabled. If you are not already using ARC, now is a good time.
+- The control does only support iOS 7.
+- Currently the control requires `UIViewControllerBasedStatusBarAppearance` to be `NO`. I hope to remove this requirement soon.
 
 ## Installation
 
