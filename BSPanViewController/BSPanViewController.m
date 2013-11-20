@@ -520,7 +520,7 @@
     self.mainController.view.layer.shadowRadius = self.leftShadowRadius;
     self.mainController.view.layer.shadowOffset = self.leftShadowOffset;
     
-    if (!self.isOpened && self.openingLeftMovesStatusBar)
+    if (!self.isOpened && self.openingLeftMovesStatusBar && ![UIApplication sharedApplication].statusBarHidden)
     {
         [self showFakeStatusBar];
     }
@@ -634,7 +634,7 @@
     self.mainController.view.layer.shadowRadius = self.rightShadowRadius;
     self.mainController.view.layer.shadowOffset = self.rightShadowOffset;
     
-    if (!self.isOpened && self.openingRightMovesStatusBar)
+    if (!self.isOpened && self.openingRightMovesStatusBar && ![UIApplication sharedApplication].statusBarHidden)
     {
         [self showFakeStatusBar];
     }
